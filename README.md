@@ -1,7 +1,7 @@
 
 # NextGenWork
 
-NextGenWork is a web application built with the MERN stack (MongoDB, Express.js, React, Node.js) designed to empower women in technology by providing a platform for finding women-centric opportunities, assessing their tech skills, and accessing valuable resources and roadmaps related to various tech domains. Additionally, the platform allows users to post opportunities, comment on, like, and bookmark opportunities of their choice.
+NextGenWork is a web application built with the MERN stack (MongoDB, Express.js, React, Node.js) designed to empower tech enthusiasts in small towns by providing a platform for finding technology-centric opportunities, assessing their tech skills, and accessing valuable resources and roadmaps related to various tech domains. Additionally, the platform allows users to post opportunities, comment on, like, and bookmark opportunities of their choice.
 
 ## Getting Started
 
@@ -84,11 +84,7 @@ Ensure you have the following installed on your system:
 
 We welcome contributions to NextGenWork! Please fork the repository and submit pull requests for any features, bug fixes, or enhancements.
 
-## License
-
-This project is licensed under the MIT License.
-
 ---
 
-Happy coding! Empower women in tech with NextGenWork.
+Happy coding! Ignite the tech scene in small towns with NextGenWork!
 ---
