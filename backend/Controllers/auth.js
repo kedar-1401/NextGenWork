@@ -16,25 +16,24 @@ const getPrivateData = asyncErrorWrapper((req,res,next) =>{
 
 })
 
-const register = asyncErrorWrapper (async  (req,res,next) => {
-
-    const { username,email , password} = req.body  ;
-    const user =await User.findOne({"email":email});
-    if(user){
-        return res.json({"message":"User Already registered"})
-    }
+const register = asyncErrorWrapper(async (req, res, next) => {
+    const { username, email, password } = req.body;
+    const user = await User.findOne({ email });
     
+    if (user) {
+        return res.status(400).json({ message: "User Already registered" });
+    }
+
     const newUser = await User.create({
         username,
         email,
         password
-    })
-    
-    sendToken(newUser ,201,res);
+    });
 
-   return res.json({"message":"User Created"})
+    // Send token and status through sendToken function
+    sendToken(newUser, 201, res);
+});
 
-})
 
 const login  = asyncErrorWrapper (async(req,res,next) => {
 

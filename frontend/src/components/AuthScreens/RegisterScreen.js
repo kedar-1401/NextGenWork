@@ -12,7 +12,7 @@ const RegisterScreen = () => {
 
   const registerHandler = async (e) => {
     e.preventDefault();
-
+  
     if (password !== confirmpassword) {
       setPassword("");
       setConfirmPassword("");
@@ -21,27 +21,38 @@ const RegisterScreen = () => {
       }, 8000);
       return setError("Passwords do not match");
     }
-
+  
     try {
-      const { data } = await axios.post("/auth/register", {
-        username,
-        email,
-        password,
+      const response = await fetch('http://localhost:5000/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
       });
-
-      localStorage.setItem("authToken", data.token);
-
+  
+      if (!response.ok) {
+        throw new Error('Failed to register');
+      }
+  
+      const data = await response.json();
+      console.log(data);
+  
+      localStorage.setItem('authToken', data.token);
+  
       setTimeout(() => {
-        navigate("/");
+        navigate('/');
       }, 1800);
     } catch (error) {
-      setError(error.response.data.error);
-
+      console.error('Error:', error);
+      setError(error.message || 'An error occurred');
+      
       setTimeout(() => {
-        setError("");
+        setError('');
       }, 6000);
     }
   };
+  
 
   return (
     <div className="Inclusive-register-page">

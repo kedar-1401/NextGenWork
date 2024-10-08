@@ -17,20 +17,24 @@ const getAccessTokenFromHeader = (req) => {
     return access_token
 }
 
-const sendToken = async(user,statusCode ,res)=>{
+const sendToken = (user, statusCode, res) => {
+    const { JWT_SECRET_KEY, JWT_EXPIRE } = process.env;
 
-    const { JWT_SECRET_KEY,JWT_EXPIRE } = process.env;
-
-    payload = {
+    const payload = {
         id: user._id,
-        username : user.username,
-        email : user.email
-    }
+        username: user.username,
+        email: user.email
+    };
 
-    const token = jwt.sign(payload ,JWT_SECRET_KEY, {expiresIn :JWT_EXPIRE} )
-    return res.json({"token":token,"statusCode":statusCode}) 
+    const token = jwt.sign(payload, JWT_SECRET_KEY, { expiresIn: JWT_EXPIRE });
 
-}
+    // Send response once, no need to call res.json() again in register
+    res.status(statusCode).json({
+        token,
+        message: "User Created"
+    });
+};
+
 
 module.exports ={
     sendToken,

@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 6000;
 app.use(express.static(path.join(__dirname, "public")));
 
 const server = app.listen(PORT, () => {
-  console.log(`Server running on port  ${PORT}`);
+  console.log(`Example app listening on http://localhost:${PORT}`);
 });
 
 process.on("unhandledRejection", (err, promise) => {

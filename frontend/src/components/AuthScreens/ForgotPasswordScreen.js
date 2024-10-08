@@ -13,7 +13,7 @@ const ForgotPasswordScreen = () => {
 
     try {
       const { data } = await axios.post(
-        "/auth/forgotpassword",
+        "http://localhost:5000/auth/forgotpassword",
         { email }
       );
 

@@ -25,8 +25,15 @@ const Home = () => {
       setLoading(true)
       try {
 
-        const { data } = await axios.get(`/story/getAllStories?search=${searchKey || ""}&page=${page}`)
-
+        const response = await fetch(`http://localhost:5000/story/getAllStories?search=${searchKey || ""}&page=${page}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        const data = await response.json();
+        
         if (searchKey) {
           navigate({
             pathname: '/',
